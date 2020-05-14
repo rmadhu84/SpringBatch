@@ -1,0 +1,47 @@
+types of lambda expressions:
+
+greetingFuntion = public void greet(){
+	System.out.println("Hello World!");
+}
+
+Removing the access modifier, return type and the function name to arrive at the below expression.
+Java compiler intelligently determines the return type. Since this is just SOP, there is no return value.
+Now the function can be accessed via the variable "greetingFunction". This variable can also be passed as argument to another function, which 
+can accept lambda expressions as arguments. 
+
+** Lambda **
+greetingFunction = ()->System.out.println("Hello World");
+
+
+In the below examples, the function returns a int value. Java compiler knows that the function is returning a int value, by looking at the expression within the function.
+The "return" keyword is not required here, since its a one-liner and there is no {} braces. It is illegal to have a  return statement,
+without the {} braces. 
+
+doubleNumberFunction = (int a) -> a*2;
+
+addFunction = (int a, int b) -> a+b;
+
+safeDivide = (int a, int b) -> {
+	if(b==0) 
+		return 0;
+	else
+		return a/b;
+};
+
+stringLengthCount = (String s) -> s.length();
+
+Now to assign a type to the variables, you need an interface and the interface must contain one and only one, method matching the signature of
+the lambda function.
+
+interface Greeting(){
+	public void perform;
+}
+
+Greeting greetingFunction = ()->System.out.println("Hello World");
+In the below example, Java uses Type inference what is the type "input" from the method declaration in the interface. Hence we can get
+rid of the type from lambda expression. And since there is only one "input", we can be rid of the () paranthesis as well.  
+StringLength s = (String input) -> input.length();
+StringLength s = input -> input.length();
+
+
+
